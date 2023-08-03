@@ -16,7 +16,7 @@ function FormNovoMedicamento() {
     const [preco, setPreco] = useState(0);
 
     const handleSubmit = (event) => {
-        adicionarMedicamento();
+        adicionarMedicamento(nome, laboratorio, preco);
         setNome("");
         setLaboratorio("");
         setPreco(0);

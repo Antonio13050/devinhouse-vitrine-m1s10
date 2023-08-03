@@ -7,12 +7,21 @@ export const MedicamentosContextProvider = ({ children }) => {
         JSON.parse(localStorage.getItem("listaMedicamentos")) || []
     );
 
-    const adicionarMedicamento = () => {
-        console.log("adicionar");
-        localStorage.setItem(
-            "listaMedicamentos",
-            JSON.stringify(listaMedicamentos)
-        );
+    const adicionarMedicamento = (nome, laboratorio, preco) => {
+        const novoMedicamento = {
+            id: listaMedicamentos.length + 1,
+            nome: nome,
+            laboratorio: laboratorio,
+            preco: preco,
+            favorito: false,
+        };
+
+        const novaLista = [...listaMedicamentos, novoMedicamento];
+
+        setListaMedicamentos(novaLista);
+
+        localStorage.setItem("listaMedicamentos", JSON.stringify(novaLista));
+        alert("Medicamento cadastrado com sucesso!");
     };
 
     const favoritarMedicamento = () => {
