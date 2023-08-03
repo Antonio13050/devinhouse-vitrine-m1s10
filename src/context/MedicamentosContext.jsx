@@ -24,8 +24,12 @@ export const MedicamentosContextProvider = ({ children }) => {
         alert("Medicamento cadastrado com sucesso!");
     };
 
-    const favoritarMedicamento = () => {
-        console.log("favoritar");
+    const favoritarMedicamento = (id) => {
+        listaMedicamentos.forEach((medicamento) => {
+            if (medicamento.id === id) {
+                medicamento.favorito = !medicamento.favorito;
+            }
+        });
     };
     return (
         <MedicamentosContext.Provider
