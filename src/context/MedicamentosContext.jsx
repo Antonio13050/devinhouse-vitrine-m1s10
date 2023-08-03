@@ -25,11 +25,13 @@ export const MedicamentosContextProvider = ({ children }) => {
     };
 
     const favoritarMedicamento = (id) => {
-        listaMedicamentos.forEach((medicamento) => {
-            if (medicamento.id === id) {
+        const lista = listaMedicamentos.map((medicamento) => {
+            if (medicamento.id == id) {
                 medicamento.favorito = !medicamento.favorito;
             }
+            return medicamento;
         });
+        setListaMedicamentos(lista);
     };
     return (
         <MedicamentosContext.Provider
